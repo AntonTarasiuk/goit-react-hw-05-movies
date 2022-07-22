@@ -1,31 +1,14 @@
-import { Routes, Route } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
-import { Home } from 'pages/Home/Home';
-import { Movies } from 'pages/Movies/Movies';
+import { StyledLink } from "./Navigation.styled";
 
-  
-export const App = () => {
+
+export const Navigation = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path='movies' element={<Movies />} />
-        </Route>
-      </Routes>
-    </div>
+    <nav>
+      <StyledLink to="/">Home</StyledLink>
+      <StyledLink to="movies">Movies</StyledLink>
+    </nav>
   );
 };
-
 
 // '/' - компонент Home, домашняя страница со списком популярных кинофильмов.
 // '/movies' - компонент Movies, страница поиска фильмов по ключевому слову.
