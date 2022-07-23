@@ -21,7 +21,7 @@ export const apiMovieSearch = async (searchQuery, page) => {
 }
 
 
-export const apiTrandingMoves = async () => {
+export const apiTrandingMovies = async () => {
     const response = await axios(`trending/all/day`, {
         params: {
             api_key: API_KEY,
@@ -29,4 +29,44 @@ export const apiTrandingMoves = async () => {
         }
     });
     return response.data;
+}
+
+export const apiGetMovieById = async (id) => {
+    const response = await axios(`movie/${id}`, {
+        params: {
+            api_key: API_KEY,
+            language: 'en-US',
+        }
+    });
+    return response.data;
+}
+
+export const apiGetMovieCast = async (id) => {
+    const response = await axios(`movie/${id}/credits`, {
+        params: {
+            api_key: API_KEY,
+            language: 'en-US',
+        }
+    });
+    return response.data.cast;
+}
+
+export const apiGetActorPic = async (id) => {
+    const response = await axios(`person/${id}/images`, {
+        params: {
+            api_key: API_KEY,
+        }
+    });
+    // console.log(response.data.profiles)
+    return response.data.profiles[0];
+}
+
+export const apiGetReviewsById = async (id) => {
+    const response = await axios(`movie/${id}/reviews`, {
+        params: {
+            api_key: API_KEY,
+            language: 'en-US',
+        }
+    });
+    return response.data.results;
 }

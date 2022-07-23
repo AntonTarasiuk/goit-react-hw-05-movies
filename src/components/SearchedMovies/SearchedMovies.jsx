@@ -8,7 +8,7 @@ export const SeachedMovies = ({ moviesList }) => {
             <ul>   
                 {moviesList.map(movie => (
                     <li key={movie.id}>
-                        <Link to='movies/:movieId'>
+                        <Link to={`${movie.id}`}>
                             {movie.title ?? movie.original_title}
                         </Link>
                     </li>

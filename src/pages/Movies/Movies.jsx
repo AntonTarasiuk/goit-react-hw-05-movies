@@ -1,21 +1,22 @@
-import { Searchbar } from "components/SearchBar/SearchBar";
 import { useState, useEffect } from "react";
-import { SeachedMovies } from "components/SeachedMovies/SeachedMovies";
+import { useSearchParams } from "react-router-dom";
+import { Searchbar } from "components/SearchBar/SearchBar";
+import { SeachedMovies } from "components/SearchedMovies/SearchedMovies";
 import { apiMovieSearch } from "services/apiGetMovies/apiGetMovies";
 
-export const Movies = () => {
+const Movies = () => {
     const [movies, setMovies] = useState([]);
-    
-    const [searchParam, setSearchParam] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const query = searchParams.get("query") || '';    
 
     const handleGetData = (searchValue) => {
-        setSearchParam(searchValue);
+        setSearchParams({query: searchValue})
     }
 
     useEffect(() => {
-        searchParam !== "" &&
-        apiMovieSearch(searchParam, 1).then(res => setMovies(res.results));
-    }, [searchParam]);
+        query !== "" &&
+        apiMovieSearch(query, 1).then(res => setMovies(res.results));
+    }, [query]);
 
     return (
         <>
@@ -24,3 +25,5 @@ export const Movies = () => {
         </>
     );
 };
+
+export default Movies;
