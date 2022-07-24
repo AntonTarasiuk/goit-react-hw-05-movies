@@ -1,22 +1,18 @@
 import axios from "axios";
 
-// import useState from './re'
-
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
 const API_KEY = '1691901ed2ae3d246dfa1eabb74d344d';
 
 export const apiMovieSearch = async (searchQuery, page) => {
-    const response = await axios(`search/movie/`, {
+    const response = await axios(`search/movie`, {
         params: {
             api_key: API_KEY,
             language: 'en-US',
             query: searchQuery,
             page, 
-
         }
     });
-    // console.log(response.data);
     return response.data;
 }
 
@@ -57,7 +53,6 @@ export const apiGetActorPic = async (id) => {
             api_key: API_KEY,
         }
     });
-    // console.log(response.data.profiles)
     return response.data.profiles[0];
 }
 
