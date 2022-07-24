@@ -17,7 +17,7 @@ export const MainInfo = ({movie}) => {
             <img src={url} alt="" />
             <MovieDescription>
                 <MovieTitle>{original_title} ({release_date.slice(0, 4)})</MovieTitle>
-                <UserRate>User score: {vote_average * 10}%</UserRate>
+                <UserRate>User score: {Math.trunc(vote_average * 10)}%</UserRate>
                 <h3>Overview</h3>
                 <Overview>{overview}</Overview>
                 <h4>Genres</h4>

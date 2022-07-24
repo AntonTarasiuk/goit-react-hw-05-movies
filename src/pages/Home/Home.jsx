@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { MainContentWrapper } from "./Home.styled";
 
 const Home = () => {
-
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
